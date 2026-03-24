@@ -11,27 +11,28 @@ use Illuminate\Support\Str;
  */
 class ArticleFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
+  /**
+   * Define the model's default state.
+   *
+   * @return array<string, mixed>
+   */
+  public function definition(): array
+  {
 
-        $faker = fake('ru_RU');
+    $faker = $this->faker;
 
-        $titles = require(base_path('/config/articles.php'));
+    $titles = require(base_path('/database/seeders/data/articles.php'));
 
-        $title = $faker->randomElement($titles);
+    $title = $faker->randomElement($titles);
 
-        return [
-            'title' => $title,
-            'content' => $faker->realText(800),
-            'slug' => Str::slug($title) . '-' . $faker->unique()->numberBetween(1, 9999),
-            'views_count' => $faker->numberBetween(0, 5000),
-            'image' => $faker->optional()->imageUrl(640, 480, 'city', true),
-            'is_featured' => $faker->boolean(10),
-        ];
-    }
+    return [
+      'title' => $title,
+      'content' => $faker->realText(800),
+      'slug' => Str::slug($title) . '-' . $faker->unique()->numberBetween(1, 9999),
+      'views_count' => $faker->numberBetween(0, 5000),
+      'image' => $faker->optional()->imageUrl(640, 480, 'city', true),
+      'published_at' => $faker->dateTimeBetween('-6 months', 'now'),
+      'is_featured' => $faker->boolean(10),
+    ];
+  }
 }

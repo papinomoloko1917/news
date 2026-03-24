@@ -8,10 +8,12 @@ use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
-    public function index()
-    {
-        $articles = Article::get();
+  public function index()
+  {
+    $articles = Article::query()
+      ->latest('published_at')
+      ->paginate(10);
 
-        return Inertia::render('Article', ['articles' => $articles]);
-    }
+    return Inertia::render('Article', ['articles' => $articles]);
+  }
 }

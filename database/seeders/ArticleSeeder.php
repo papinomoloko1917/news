@@ -8,11 +8,11 @@ use Illuminate\Database\Seeder;
 
 class ArticleSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-        Article::factory()->count(50)->create();
-    }
+  /**
+   * Run the database seeds.
+   */
+  public function run(): void
+  {
+    Article::factory()->count(150)->create();
+  }
 }
