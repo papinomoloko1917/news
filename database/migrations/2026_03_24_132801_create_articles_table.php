@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
+            $table->string('title'); //Название статьи
+            $table->text('content'); //Контент новости
+            $table->string('slug')->unique(); //Slug для красивых url
             $table->integer('views_count')->default('0'); //Количество просмотров статьи
+            $table->timestamp('published_at')->nullable(); //Дата публикации новости
+            $table->string('image')->nullable(); //Путь к изображению
+            $table->boolean('is_featured')->default(false); //Закрепить новость
             $table->timestamps();
         });
     }
