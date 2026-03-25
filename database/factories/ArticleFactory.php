@@ -23,6 +23,10 @@ class ArticleFactory extends Factory
 
     $titles = require(base_path('/database/seeders/data/articles.php'));
 
+    $images = require(base_path('/database/seeders/data/images_for_articles.php'));
+
+    $image = $faker->randomElement($images);
+
     $title = $faker->randomElement($titles);
 
     return [
@@ -30,7 +34,7 @@ class ArticleFactory extends Factory
       'content' => $faker->realText(800),
       'slug' => Str::slug($title) . '-' . $faker->unique()->numberBetween(1, 9999),
       'views_count' => $faker->numberBetween(0, 5000),
-      'image' => $faker->optional()->imageUrl(640, 480, 'city', true),
+      'image' => $image,
       'published_at' => $faker->dateTimeBetween('-6 months', 'now'),
       'is_featured' => $faker->boolean(10),
     ];

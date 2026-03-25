@@ -10,10 +10,10 @@ class ArticleController extends Controller
 {
   public function index()
   {
-    $articles = Article::query()
+    $paginate_articles = Article::query()
       ->latest('published_at')
       ->paginate(10);
 
-    return Inertia::render('Article', ['articles' => $articles]);
+    return Inertia::render('Article', ['paginate_articles' => $paginate_articles]);
   }
 }

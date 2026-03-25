@@ -10,3 +10,28 @@ export type Article = {
   created_at?: string;
   updated_at?: string;
 };
+
+export type PaginationLink = {
+  url: string;
+  label: string | null;
+  page: number;
+  active: boolean;
+}
+
+export type Pagination<T> = {
+  current_page: number;
+  data: T[];
+  first_page_url: string;
+  from: number | null;
+  last_page: number;
+  last_page_url: string | null;
+  links: PaginationLink[];
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: null;
+  to: number | null;
+  total: number;
+};
+
+export type ArticlePagination = Pagination<Article>;
