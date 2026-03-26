@@ -13,8 +13,8 @@ export type Article = {
 
 export type PaginationLink = {
   url: string;
-  label: string | null;
-  page: number;
+  label: string;
+  page?: number | null;
   active: boolean;
 }
 

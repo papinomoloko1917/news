@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Paginator from '@/components/Paginator.vue';
 import ArticleList from '@/components/ArticleList.vue';
 import Divider from '@/components/Divider.vue';
+import Paginator from '@/components/Paginator.vue';
 import type { ArticlePagination } from '@/types/article';
 const props = defineProps<{
   paginate_articles: ArticlePagination
 }>();
-
+console.log(props.paginate_articles);
 </script>
 
 <template>
@@ -16,6 +16,8 @@ const props = defineProps<{
       :show-divider="index !== props.paginate_articles.data.length - 1">
       <ArticleList :article="article" />
     </Divider>
-    <Paginator :links="props.paginate_articles.links" />
+
+    <Paginator v-if="props.paginate_articles.total !== 0" :links="props.paginate_articles.links" />
+
   </div>
 </template>

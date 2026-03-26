@@ -12,6 +12,7 @@ class ArticleController extends Controller
   {
     $paginate_articles = Article::query()
       ->latest('published_at')
+      ->latest()
       ->paginate(10);
 
     return Inertia::render('Article', ['paginate_articles' => $paginate_articles]);
