@@ -1,14 +1,23 @@
-export type Article = {
+export type ArticlePreview = {
+  id: number;
+  title: string;
+  slug: string;
+  image: string | null;
+  views_count: number;
+  is_featured: boolean;
+  published_at: string | null;
+  excerpt: string;
+};
+
+export type ArticleFull = {
   id: number;
   title: string;
   content: string;
   slug: string;
-  views_count: number;
   image: string | null;
+  views_count: number;
   is_featured: boolean;
   published_at: string | null;
-  created_at?: string;
-  updated_at?: string;
 };
 
 export type PaginationLink = {

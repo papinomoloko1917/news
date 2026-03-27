@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import type { Article } from '@/types/article';
+import { Link } from '@inertiajs/vue3';
+import { show as showArticle } from '@/actions/App/Http/Controllers/ArticleController';
+import type { Article, ArticlePreview } from '@/types/article';
 const { article } = defineProps<{
-  article: Article
+  article: ArticlePreview
 }>();
 </script>
 
@@ -13,9 +15,11 @@ const { article } = defineProps<{
         <div>
           <h1 class="text-xl font-bold">{{ article.title }}</h1>
           <p class="py-6 text-sm">
-            {{ article.content }}
+            {{ article.excerpt }}
           </p>
-          <button class="btn btn-primary">Читать новость</button>
+          <Link :href="showArticle(article.slug)" class="btn btn-primary">
+            Читать новость
+          </Link>
         </div>
       </div>
     </div>
