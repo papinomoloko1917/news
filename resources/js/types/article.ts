@@ -12,7 +12,7 @@ export type Article = {
 };
 
 export type PaginationLink = {
-  url: string;
+  url: string | null;
   label: string;
   page?: number | null;
   active: boolean;
@@ -29,7 +29,7 @@ export type Pagination<T> = {
   next_page_url: string | null;
   path: string;
   per_page: number;
-  prev_page_url: null;
+  prev_page_url: string | null;
   to: number | null;
   total: number;
 };

@@ -6,7 +6,6 @@ import type { ArticlePagination } from '@/types/article';
 const props = defineProps<{
   paginate_articles: ArticlePagination
 }>();
-console.log(props.paginate_articles);
 </script>
 
 <template>

@@ -24,8 +24,15 @@ const showLabel = (label: string): string => {
 
 <template>
   <div class="join">
-    <Link v-for="(link, index) in links" :key="index" :href="link.url || ''" :class="getPaginationClass(link.active)">
-      {{ showLabel(link.label) }}
-    </Link>
+
+    <template v-for="(link, index) in links" :key="index">
+      <span v-if="!link.url" class="join-item btn btn-disabled">
+        {{ showLabel(link.label) }}
+      </span>
+      <Link v-else :href="link.url" :class="getPaginationClass(link.active)">
+        {{ showLabel(link.label) }}
+      </Link>
+
+    </template>
   </div>
 </template>
