@@ -43,4 +43,4 @@ export type Pagination<T> = {
   total: number;
 };
 
-export type ArticlePagination = Pagination<Article>;
+export type ArticlePagination = Pagination<ArticlePreview>;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
 import { show as showArticle } from '@/actions/App/Http/Controllers/ArticleController';
-import type { Article, ArticlePreview } from '@/types/article';
+import type { ArticlePreview } from '@/types/article';
 const { article } = defineProps<{
   article: ArticlePreview
 }>();
